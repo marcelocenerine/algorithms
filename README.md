@@ -1,2 +1,2 @@
 # algorithms
-Implementation of different algorithms using Scala and Java.
+Implementation of several popular algorithms and data structures using Scala and Java.
