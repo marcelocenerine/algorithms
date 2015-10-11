@@ -1,9 +1,11 @@
 package com.cenerino.algorithms.collections;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 public class BinarySearchTreeTest {
@@ -79,5 +81,47 @@ public class BinarySearchTreeTest {
         for (int key : bst.keys()) {
             assertThat(key, is(++n));
         }
+    }
+
+    @Test
+    public void shouldDeleteKeyWithNoChildren() {
+        bst.put(2, "two");
+        bst.put(1, "one");
+        bst.put(3, "three");
+
+        bst.delete(3);
+
+        assertThat(bst.size(), is(2));
+        assertThat(bst.containsKey(3), is(false));
+        assertThat(bst.containsKey(1), is(true));
+        assertThat(bst.containsKey(2), is(true));
+    }
+
+    @Test
+    public void shouldDeleteKeyWithOneChild() {
+        bst.put(3, "three");
+        bst.put(2, "two");
+        bst.put(1, "one");
+
+        bst.delete(2);
+
+        assertThat(bst.size(), is(2));
+        assertThat(bst.containsKey(2), is(false));
+        assertThat(bst.containsKey(1), is(true));
+        assertThat(bst.containsKey(3), is(true));
+    }
+
+    @Test
+    public void shouldDeleteKeyWithTwoChildren() {
+        bst.put(2, "two");
+        bst.put(3, "three");
+        bst.put(1, "one");
+
+        bst.delete(2);
+
+        assertThat(bst.size(), is(2));
+        assertThat(bst.containsKey(2), is(false));
+        assertThat(bst.containsKey(1), is(true));
+        assertThat(bst.containsKey(3), is(true));
     }
 }
