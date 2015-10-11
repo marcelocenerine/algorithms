@@ -1,22 +1,20 @@
 package com.cenerino.algorithms.collections;
 
-import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.NoSuchElementException;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
-public class BinarySearchTreeTest {
+public class RedBlackBinarySearchTreeTest {
 
-    private BinarySearchTree<Integer, String> bst;
+    private RedBlackBinarySearchTree<Integer, String> bst;
 
     @Before
     public void setUp() {
-        bst = new BinarySearchTree<>();
+        bst = new RedBlackBinarySearchTree<>();
     }
 
     @Test
@@ -38,20 +36,11 @@ public class BinarySearchTreeTest {
 
     @Test
     public void shouldReturnSizeOfNonEmptyTree() {
-        bst.put(1, "one");
-        bst.put(2, "two");
-        bst.put(3, "three");
+        for (int x = 0; x < 255; x++) {
+            bst.put(x, Integer.toString(x));
+        }
 
-        assertThat(bst.size(), is(3));
-    }
-
-    @Test
-    public void shouldAddNewKey() {
-        bst.put(1, "one");
-        bst.put(2, "two");
-
-        assertThat(bst.get(1), is("one"));
-        assertThat(bst.get(2), is("two"));
+        assertThat(bst.size(), is(255));
     }
 
     @Test
@@ -72,17 +61,23 @@ public class BinarySearchTreeTest {
 
     @Test
     public void shouldReturnKeysInNaturalOrder() {
-        bst.put(5, "e");
-        bst.put(3, "c");
-        bst.put(2, "b");
-        bst.put(6, "f");
-        bst.put(1, "a");
-        bst.put(4, "d");
+        for (int x = 100; x > 0; x--) {
+            bst.put(x, Integer.toString(x));
+        }
 
         int n = 0;
         for (int key : bst.keys()) {
             assertThat(key, is(++n));
         }
+    }
+
+    @Test
+    public void shouldBeBalancedAfterManyInsertions() {
+        for (int x = (int) Math.pow(2, 10); x > 0; x--) {
+            bst.put(x, Integer.toString(x));
+        }
+
+        assertThat(bst.isBalanced(), is(true));
     }
 
     @Test
