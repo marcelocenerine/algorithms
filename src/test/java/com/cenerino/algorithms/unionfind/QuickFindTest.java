@@ -1,8 +1,5 @@
-package com.cenerino.algorithms.search;
+package com.cenerino.algorithms.unionfind;
 
-import com.cenerino.algorithms.search.QuickFind;
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 

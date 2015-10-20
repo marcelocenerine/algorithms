@@ -1,6 +1,4 @@
-package com.cenerino.algorithms.search;
-
-import java.util.Arrays;
+package com.cenerino.algorithms.unionfind;
 
 /**
  * Algorithm analysis:

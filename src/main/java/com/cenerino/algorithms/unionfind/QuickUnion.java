@@ -1,4 +1,4 @@
-package com.cenerino.algorithms.search;
+package com.cenerino.algorithms.unionfind;
 
 /**
  * Algorithm analysis:

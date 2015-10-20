@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 public class PriorityQueue<T extends Comparable<T>> {
 
     private int n;
-     T[] heap;
+    private T[] heap;
 
     /**
      * TODO use resizeable array instead of informing capacity
