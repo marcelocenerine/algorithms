@@ -48,42 +48,4 @@ public class PriorityQueueTest {
         pq.delMax();
         pq.delMax();
     }
-
-    public static void main(String[] args) {
-        //94 88 71 80 33 12 15 37 61 10
-        PriorityQueue<Integer> pq = new PriorityQueue<>(15);
-//        pq.insert(94);
-//        pq.insert(88);
-//        pq.insert(71);
-//        pq.insert(80);
-//        pq.insert(33);
-//        pq.insert(12);
-//        pq.insert(15);
-//        pq.insert(37);
-//        pq.insert(61);
-//        pq.insert(10);
-//
-//        pq.insert(87);
-//        pq.insert(98);
-//        pq.insert(52);
-
-        //85 82 63 81 21 45 50 34 47 19
-        pq.insert(85);
-        pq.insert(82);
-        pq.insert(63);
-        pq.insert(81);
-        pq.insert(21);
-        pq.insert(45);
-        pq.insert(50);
-        pq.insert(34);
-        pq.insert(47);
-        pq.insert(19);
-
-        pq.delMax();
-        pq.delMax();
-        pq.delMax();
-
-
-        System.out.println(Arrays.toString(pq.heap));
-    }
 }
