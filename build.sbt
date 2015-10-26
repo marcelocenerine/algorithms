@@ -10,5 +10,6 @@ javacOptions ++= Seq("-source", "1.7", "-target", "1.7")
 
 libraryDependencies ++= Seq(
   "junit" % "junit" % "4.11" % "test",
-  "com.novocode" % "junit-interface" % "0.8" % "test->default"
+  "com.novocode" % "junit-interface" % "0.8" % "test->default",
+  "org.scalatest" %% "scalatest" % "2.2.4" % "test"
 )
