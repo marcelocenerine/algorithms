@@ -6,9 +6,6 @@ import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
 
-/**
- * Created by marcelo on 26/10/15.
- */
 @RunWith(classOf[JUnitRunner])
 class QuickSortTest extends FunSuite {
 
