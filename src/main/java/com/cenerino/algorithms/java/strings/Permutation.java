@@ -7,9 +7,11 @@ import java.util.Arrays;
  */
 public class Permutation {
 
-    public static boolean isPermutation(String original, String permutation) {
-        char[] originalChars = original.toCharArray();
-        char[] permChars = permutation.toCharArray();
+    public static boolean isPermutation(String str1, String str2) {
+        if (str1.length() != str2.length()) return false;
+
+        char[] originalChars = str1.toCharArray();
+        char[] permChars = str2.toCharArray();
 
         Arrays.sort(originalChars);
         Arrays.sort(permChars);
