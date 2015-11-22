@@ -12,14 +12,14 @@ public class LinkedQueueTest {
 
     @Test
     public void shouldBeEmpty() {
-        LinkedQueue<String> queue = new LinkedQueue<String>();
+        LinkedQueue<String> queue = new LinkedQueue<>();
 
         assertThat(queue.isEmpty(), is(true));
     }
 
     @Test
     public void shouldBeEmptyAfterAddingAndRemoving() {
-        LinkedQueue<String> queue = new LinkedQueue<String>();
+        LinkedQueue<String> queue = new LinkedQueue<>();
         queue.enqueue("x");
         queue.dequeue();
 
@@ -28,7 +28,7 @@ public class LinkedQueueTest {
 
     @Test
     public void shouldNotBeEmpty() {
-        LinkedQueue<String> queue = new LinkedQueue<String>();
+        LinkedQueue<String> queue = new LinkedQueue<>();
         queue.enqueue("first");
 
         assertThat(queue.isEmpty(), is(false));
@@ -36,7 +36,7 @@ public class LinkedQueueTest {
 
     @Test
     public void shouldReturnElementsInCorrectOrder() {
-        LinkedQueue<String> queue = new LinkedQueue<String>();
+        LinkedQueue<String> queue = new LinkedQueue<>();
 
         for (int x = 0; x < 30; x++) {
             queue.enqueue(String.valueOf(x));
@@ -49,14 +49,14 @@ public class LinkedQueueTest {
 
     @Test(expected = NoSuchElementException.class)
     public void shouldFailIfPopIsCalledOnEmptyList() {
-        LinkedQueue<String> queue = new LinkedQueue<String>();
+        LinkedQueue<String> queue = new LinkedQueue<>();
 
         queue.dequeue();
     }
 
     @Test
     public void shouldIterateThroughItems() {
-        LinkedQueue<String> queue = new LinkedQueue<String>();
+        LinkedQueue<String> queue = new LinkedQueue<>();
 
         for (int x = 0; x < 30; x++) {
             queue.enqueue(String.valueOf(x));
@@ -74,13 +74,11 @@ public class LinkedQueueTest {
 
     @Test(expected = NoSuchElementException.class)
     public void shouldFailIfNextIsCalledOnIteratorWithNoMoreElements() {
-        LinkedQueue<String> queue = new LinkedQueue<String>();
-        queue.iterator().next();
+        new LinkedQueue<String>().iterator().next();
     }
 
     @Test(expected = UnsupportedOperationException.class)
     public void shouldFailIfRemoveIsCalledOnIterator() {
-        LinkedQueue<String> queue = new LinkedQueue<String>();
-        queue.iterator().remove();
+        new LinkedQueue<String>().iterator().remove();
     }
 }

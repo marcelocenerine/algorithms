@@ -12,14 +12,14 @@ public class LinkedStackTest {
 
     @Test
     public void shouldBeEmpty() {
-        LinkedStack<String> stack = new LinkedStack<String>();
+        LinkedStack<String> stack = new LinkedStack<>();
 
         assertThat(stack.isEmpty(), is(true));
     }
 
     @Test
     public void shouldBeEmptyAfterAddingAndRemoving() {
-        LinkedStack<String> stack = new LinkedStack<String>();
+        LinkedStack<String> stack = new LinkedStack<>();
         stack.push("x");
         stack.pop();
 
@@ -28,7 +28,7 @@ public class LinkedStackTest {
 
     @Test
     public void shouldNotBeEmpty() {
-        LinkedStack<String> stack = new LinkedStack<String>();
+        LinkedStack<String> stack = new LinkedStack<>();
         stack.push("first");
 
         assertThat(stack.isEmpty(), is(false));
@@ -36,7 +36,7 @@ public class LinkedStackTest {
 
     @Test
     public void shouldReturnElementsInCorrectOrder() {
-        LinkedStack<String> stack = new LinkedStack<String>();
+        LinkedStack<String> stack = new LinkedStack<>();
 
         for (int x = 1; x <= 30; x++) {
             stack.push(String.valueOf(x));
@@ -49,14 +49,14 @@ public class LinkedStackTest {
 
     @Test(expected = NoSuchElementException.class)
     public void shouldFailIfPopIsCalledOnEmptyList() {
-        LinkedStack<String> stack = new LinkedStack<String>();
+        LinkedStack<String> stack = new LinkedStack<>();
 
         stack.pop();
     }
 
     @Test
     public void shouldIterateThroughItems() {
-        LinkedStack<String> stack = new LinkedStack<String>();
+        LinkedStack<String> stack = new LinkedStack<>();
 
         for (int x = 0; x < 30; x++) {
             stack.push(String.valueOf(x));
