@@ -18,6 +18,6 @@ object Fibonacci {
         cache(n - 1) + cache(n - 2)
       }
 
-    cachedFib(n, Array(n))
+    cachedFib(n, Array.ofDim(n))
   }
 }
