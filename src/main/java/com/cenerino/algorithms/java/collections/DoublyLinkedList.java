@@ -3,29 +3,31 @@ package com.cenerino.algorithms.java.collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class SinglyLinkedList<T> implements Iterable<T> {
+public class DoublyLinkedList<T> implements Iterable<T> {
 
     private Node<T> first;
     private Node<T> last;
     private int size;
 
     public void addFirst(T value) {
-        first = new Node(value, first);
+        first = new Node(value, first, null);
 
-        if (isEmpty()) last = first;
+        if (isEmpty()) {
+            last = first;
+        } else {
+            first.next.prev = first;
+        }
 
         size++;
     }
 
     public void addLast(T value) {
-        Node<T> node = new Node(value, null);
+        last = new Node(value, null, last);
 
         if (isEmpty()) {
-            first = node;
-            last = node;
+            first = last;
         } else {
-            last.next = node;
-            last = node;
+            last.prev.next = last;
         }
 
         size++;
@@ -42,8 +44,16 @@ public class SinglyLinkedList<T> implements Iterable<T> {
     }
 
     public T get(int n) {
-        validateIndex(n);
+        return getNode(n).value;
+    }
 
+    private Node<T> getNode(int n) {
+        validateIndex(n);
+        int middle = (size - 1) / 2;
+        return n <= middle ? stepForwards(n) : stepBackwards(n);
+    }
+
+    private Node<T> stepForwards(int n) {
         int currentPos = 0;
         Node<T> current = first;
 
@@ -52,15 +62,19 @@ public class SinglyLinkedList<T> implements Iterable<T> {
             currentPos++;
         }
 
-        return current.value;
+        return current;
     }
 
-    private void validateIndex(int n) {
-        if (n < 0 || n >= size) throw new IndexOutOfBoundsException();
-    }
+    private Node<T> stepBackwards(int n) {
+        int currentPos = size - 1;
+        Node<T> current = last;
 
-    private void validateEmptiness() {
-        if (isEmpty()) throw new NoSuchElementException();
+        while (currentPos > n) {
+            current = current.prev;
+            currentPos--;
+        }
+
+        return current;
     }
 
     public T removeFirst() {
@@ -79,7 +93,7 @@ public class SinglyLinkedList<T> implements Iterable<T> {
 
         while (current != null) {
             if (current.value.equals(value)) {
-                remove(current, previous);
+                remove(current);
                 return true;
             }
 
@@ -91,54 +105,33 @@ public class SinglyLinkedList<T> implements Iterable<T> {
     }
 
     public T remove(int n) {
-        validateIndex(n);
-        Node<T> previous = null;
-        Node<T> current = first;
-        int currentPos = 0;
-
-        while (currentPos < n) {
-            previous = current;
-            current = current.next;
-            currentPos++;
-        }
-
-        remove(current, previous);
-        return current.value;
+        Node<T> node = getNode(n);
+        remove(node);
+        return node.value;
     }
 
-    private void remove(Node<T> node, Node<T> previous) {
-        if (previous == null) { // first
+    private void remove(Node<T> node) {
+        if (node.prev == null) { // first
             first = node.next;
         } else {
-            previous.next = node.next;
+            node.prev.next = node.next;
         }
 
         if (node.next == null) { // last
-            last = previous;
+            last = node.prev;
+        } else {
+            node.next.prev = node.prev;
         }
 
         size--;
     }
 
-    /**
-     * Method with side effect
-     */
-    public SinglyLinkedList<T> reverse() {
-        if (size > 1) {
-            Node<T> previous = null;
-            Node<T> current = first;
-            first = last;
-            last = current;
+    private void validateIndex(int n) {
+        if (n < 0 || n >= size) throw new IndexOutOfBoundsException();
+    }
 
-            while (current != null) {
-                Node<T> next = current.next;
-                current.next = previous;
-                previous = current;
-                current = next;
-            }
-        }
-
-        return this;
+    private void validateEmptiness() {
+        if (isEmpty()) throw new NoSuchElementException();
     }
 
     public int size() {
@@ -176,14 +169,42 @@ public class SinglyLinkedList<T> implements Iterable<T> {
         };
     }
 
+    public Iterator<T> reverseIterator() {
+        return new Iterator<T>() {
+
+            private Node<T> current = last;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) throw new NoSuchElementException();
+
+                T value = current.value;
+                current = current.prev;
+                return value;
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
+    }
+
     private static class Node<T> {
 
         private T value;
         private Node<T> next;
+        private Node<T> prev;
 
-        public Node(T value, Node<T> next) {
+        public Node(T value, Node<T> next, Node<T> prev) {
             this.value = value;
             this.next = next;
+            this.prev = prev;
         }
     }
 }
