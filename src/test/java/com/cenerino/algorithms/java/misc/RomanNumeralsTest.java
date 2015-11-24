@@ -1,28 +1,44 @@
 package com.cenerino.algorithms.java.misc;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
+import java.util.Arrays;
+import java.util.Collection;
+
+import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+@RunWith(Parameterized.class)
 public class RomanNumeralsTest {
 
-    private int[] arabicNumerals = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40,
-            50, 100, 150, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1789, 10574};
-    private String[] romanNumerals = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XX", "XXX", "XL",
-            "L", "C", "CL", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM", "M", "MDCCLXXXIX", "MMMMMMMMMMDLXXIV"};
+    @Parameter(0)
+    public int arabicNumeral;
+
+    @Parameter(1)
+    public String romanNumeral;
+
+    @Parameters
+    public static Collection<Object[]> data() {
+        return asList(new Object[][]{
+                {1, "I"}, {2, "II"}, {3, "III"}, {4, "IV"}, {5, "V"}, {6, "VI"}, {7, "VII"}, {8, "VIII"}, {9, "IX"},
+                {10, "X"}, {20, "XX"}, {30, "XXX"}, {40, "XL"}, {50, "L"}, {100, "C"}, {150, "CL"}, {200, "CC"},
+                {300, "CCC"}, {400, "CD"}, {500, "D"}, {600, "DC"}, {700, "DCC"}, {800, "DCCC"}, {900, "CM"}, {1000, "M"},
+                {1789, "MDCCLXXXIX"}, {10574, "MMMMMMMMMMDLXXIV"}
+        });
+    }
 
     @Test
     public void shouldConvertToRoman() {
-        for (int i = 0; i < arabicNumerals.length ; i++) {
-            assertThat(RomanNumerals.encode(arabicNumerals[i]), is(romanNumerals[i]));
-        }
+        assertThat(RomanNumerals.encode(arabicNumeral), is(romanNumeral));
     }
 
     @Test
     public void shouldConvertToArabic() {
-        for (int i = 0; i < romanNumerals.length ; i++) {
-            assertThat(RomanNumerals.decode(romanNumerals[i]), is(arabicNumerals[i]));
-        }
+        assertThat(RomanNumerals.decode(romanNumeral), is(arabicNumeral));
     }
 }
