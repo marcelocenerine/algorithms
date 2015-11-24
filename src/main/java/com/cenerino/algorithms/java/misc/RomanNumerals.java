@@ -17,7 +17,7 @@ public class RomanNumerals {
     }
 
     public static String encode(int num) {
-        StringBuffer result = new StringBuffer();
+        StringBuilder result = new StringBuilder();
         int leftover = num;
 
         for (Numeral numeral : Numeral.values()) {
