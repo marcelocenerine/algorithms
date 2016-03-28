@@ -10,7 +10,7 @@ import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class UniderectedGraphTest {
+public class UndirectedGraphTest {
 
     private Graph<Integer> graph = new UndirectedGraph<>();
 
