@@ -1,15 +1,15 @@
 package com.cenerino.algorithms.java.graphs;
 
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class DepthFirstOrder<V> {
 
     private Deque<V> reversePost = new LinkedList<>();
-    private Queue<V> visited = new LinkedList<>();
+    private Set<V> visited;
 
     private DepthFirstOrder(Digraph<V> digraph) {
+        visited = new HashSet<>(digraph.vertexCount());
+
         for (V vertex : digraph.vertices())
             if (!visited.contains(vertex)) dfs(digraph, vertex);
     }
