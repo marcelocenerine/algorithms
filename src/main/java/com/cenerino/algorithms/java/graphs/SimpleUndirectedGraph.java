@@ -1,6 +1,6 @@
 package com.cenerino.algorithms.java.graphs;
 
-public class UndirectedGraph<V> extends AbstractGraph<V> {
+public class SimpleUndirectedGraph<V> extends AbstractGraph<V> {
 
     @Override
     public void addEdge(V v1, V v2) {

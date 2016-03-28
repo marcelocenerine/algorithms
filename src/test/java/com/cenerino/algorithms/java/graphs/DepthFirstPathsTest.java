@@ -1,13 +1,7 @@
 package com.cenerino.algorithms.java.graphs;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
@@ -21,7 +15,7 @@ public class DepthFirstPathsTest {
 
     @Before
     public void setUp() {
-        Graph<Integer> graph = new UndirectedGraph<>();
+        Graph<Integer> graph = new SimpleUndirectedGraph<>();
         graph.addVertex(0);
         graph.addVertex(1);
         graph.addVertex(2);

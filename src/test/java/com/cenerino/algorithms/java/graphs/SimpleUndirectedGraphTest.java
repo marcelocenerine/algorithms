@@ -1,6 +1,5 @@
 package com.cenerino.algorithms.java.graphs;
 
-import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -9,9 +8,9 @@ import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class UndirectedGraphTest {
+public class SimpleUndirectedGraphTest {
 
-    private Graph<Integer> graph = new UndirectedGraph<>();
+    private Graph<Integer> graph = new SimpleUndirectedGraph<>();
 
     @Test
     public void shouldAddVertex() {

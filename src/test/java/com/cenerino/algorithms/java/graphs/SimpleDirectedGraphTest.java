@@ -3,16 +3,15 @@ package com.cenerino.algorithms.java.graphs;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 import static java.util.Collections.emptyList;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class DirectedGraphTest {
+public class SimpleDirectedGraphTest {
 
-    private Graph<Integer> graph = new DirectedGraph<>();
+    private Digraph<Integer> graph = new SimpleDirectedGraph<>();
 
     @Test
     public void shouldAddVertex() {
