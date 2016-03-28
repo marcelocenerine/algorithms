@@ -1,7 +1,6 @@
 package com.cenerino.algorithms.java.graphs;
 
 import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -17,7 +16,7 @@ public class UndirectedGraphTest {
     @Test
     public void shouldAddVertex() {
         assertThat(graph.addVertex(1), is(true));
-        assertThat(graph.vertices(), is(1));
+        assertThat(graph.vertexCount(), is(1));
     }
 
     @Test
@@ -25,7 +24,7 @@ public class UndirectedGraphTest {
         graph.addVertex(2);
 
         assertThat(graph.addVertex(2), is(false));
-        assertThat(graph.vertices(), is(1));
+        assertThat(graph.vertexCount(), is(1));
     }
 
     @Test
@@ -35,7 +34,7 @@ public class UndirectedGraphTest {
 
         graph.addEdge(1, 2);
 
-        assertThat(graph.edges(), is(1));
+        assertThat(graph.edgeCount(), is(1));
         assertThat(graph.adj(1), hasItems(2));
         assertThat(graph.adj(2), hasItems(1));
     }
@@ -46,7 +45,7 @@ public class UndirectedGraphTest {
 
         graph.addEdge(1, 1);
 
-        assertThat(graph.edges(), is(1));
+        assertThat(graph.edgeCount(), is(1));
         assertThat(graph.adj(1), hasItems(1));
     }
 
@@ -58,20 +57,20 @@ public class UndirectedGraphTest {
         graph.addEdge(1, 2);
         graph.addEdge(2, 1);
 
-        assertThat(graph.edges(), is(2));
+        assertThat(graph.edgeCount(), is(2));
         assertThat(graph.adj(1), is(Arrays.asList(2, 2)));
         assertThat(graph.adj(2), is(Arrays.asList(1, 1)));
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void shouldNotAddEdgeIfSourceDoesNotExist() {
+    public void shouldNotAddEdgeIfFirstVertexDoesNotExist() {
         graph.addVertex(1);
 
         graph.addEdge(2, 1);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void shouldNotAddEdgeIfTargetDoesNotExist() {
+    public void shouldNotAddEdgeIfSecondVertexDoesNotExist() {
         graph.addVertex(1);
 
         graph.addEdge(1, 2);
@@ -94,5 +93,14 @@ public class UndirectedGraphTest {
         assertThat(graph.degree(1), is(2));
         assertThat(graph.degree(2), is(1));
         assertThat(graph.degree(3), is(1));
+    }
+
+    @Test
+    public void shouldReturnAllVertices() {
+        graph.addVertex(1);
+        graph.addVertex(2);
+        graph.addVertex(3);
+
+        assertThat(graph.vertices(), hasItems(1, 2, 3));
     }
 }
