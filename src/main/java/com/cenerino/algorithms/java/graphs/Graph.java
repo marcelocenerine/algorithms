@@ -6,7 +6,7 @@ import java.util.Set;
 public interface Graph<V> {
 
     boolean addVertex(V vertex);
-    void addEdge(V vertex1, V vertex2);
+    void addEdge(V source, V target);
     List<V> adj(V vertex);
     int vertexCount();
     int edgeCount();
