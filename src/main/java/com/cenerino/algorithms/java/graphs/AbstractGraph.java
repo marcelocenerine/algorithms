@@ -6,7 +6,7 @@ import static java.util.Collections.unmodifiableSet;
 
 abstract class AbstractGraph<V> implements Graph<V> {
 
-    protected Map<V, List<V>> adjacencyLists = new HashMap<>();
+    protected final Map<V, List<V>> adjacencyLists = new HashMap<>();
     protected int edgeCount;
 
     @Override
@@ -17,7 +17,7 @@ abstract class AbstractGraph<V> implements Graph<V> {
     @Override
     public List<V> adj(V vertex) {
         validateVertices(vertex);
-        return adjacencyLists.get(vertex);
+        return Collections.unmodifiableList(adjacencyLists.get(vertex));
     }
 
     @Override

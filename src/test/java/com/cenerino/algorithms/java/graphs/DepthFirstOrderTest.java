@@ -3,8 +3,6 @@ package com.cenerino.algorithms.java.graphs;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -15,7 +13,7 @@ public class DepthFirstOrderTest {
 
     @Before
     public void setUp() {
-        Digraph<Integer> graph = new SimpleDirectedGraph<>();
+        Digraph<Integer> graph = new DirectedGraph<>();
         graph.addVertex(0);
         graph.addVertex(1);
         graph.addVertex(2);

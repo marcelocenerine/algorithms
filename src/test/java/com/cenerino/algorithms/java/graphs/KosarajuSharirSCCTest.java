@@ -12,7 +12,7 @@ public class KosarajuSharirSCCTest {
 
     @Before
     public void setUp() {
-        Digraph<Integer> graph = new SimpleDirectedGraph<>();
+        Digraph<Integer> graph = new DirectedGraph<>();
         graph.addVertex(0);
         graph.addVertex(1);
         graph.addVertex(2);

@@ -12,7 +12,7 @@ public class ConnectedComponentsTest {
 
     @Before
     public void setUp() {
-        Graph<Integer> graph = new SimpleUndirectedGraph<>();
+        Graph<Integer> graph = new UndirectedGraph<>();
         graph.addVertex(0);
         graph.addVertex(1);
         graph.addVertex(2);

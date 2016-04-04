@@ -1,6 +1,6 @@
 package com.cenerino.algorithms.java.unionfind;
 
-public class QuickUnionWithPathCompression {
+public class QuickUnionWithPathCompression implements UnionFind {
 
     private int[] ids;
 
@@ -12,6 +12,7 @@ public class QuickUnionWithPathCompression {
         }
     }
 
+    @Override
     public boolean isConnected(int p, int q) {
         return root(p) == root(q);
     }
@@ -26,15 +27,9 @@ public class QuickUnionWithPathCompression {
         }
 
         return root;
-
-//        while (n != ids[n]) {
-//            ids[n] = ids[ids[n]];
-//            n = ids[n];
-//        }
-//
-//        return n;
     }
 
+    @Override
     public void union(int p, int q) {
         int proot = root(p);
         int qroot = root(q);

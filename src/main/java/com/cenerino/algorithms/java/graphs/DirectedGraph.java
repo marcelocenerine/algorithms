@@ -1,8 +1,6 @@
 package com.cenerino.algorithms.java.graphs;
 
-import java.util.Set;
-
-public class SimpleDirectedGraph<V> extends AbstractGraph<V> implements Digraph<V> {
+public class DirectedGraph<V> extends AbstractGraph<V> implements Digraph<V> {
 
     @Override
     public void addEdge(V source, V target) {
@@ -13,7 +11,7 @@ public class SimpleDirectedGraph<V> extends AbstractGraph<V> implements Digraph<
 
     @Override
     public Digraph<V> reverse() {
-        Digraph<V> rev = new SimpleDirectedGraph<>();
+        Digraph<V> rev = new DirectedGraph<>();
 
         for (V vertex : vertices())
             rev.addVertex(vertex);

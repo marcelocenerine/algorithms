@@ -7,7 +7,7 @@ package com.cenerino.algorithms.java.unionfind;
  * Union: log2(N)
  * Connected: log2(N)
  */
-public class WeightedQuickUnion {
+public class WeightedQuickUnion implements UnionFind {
 
     private int[] ids;
     private int[] sizes;
@@ -22,6 +22,7 @@ public class WeightedQuickUnion {
         }
     }
 
+    @Override
     public boolean isConnected(int p, int q) {
         return root(p) == root(q);
     }
@@ -30,6 +31,7 @@ public class WeightedQuickUnion {
         return n == ids[n] ? n : root(ids[n]);
     }
 
+    @Override
     public void union(int p, int q) {
         int proot = root(p);
         int qroot = root(q);

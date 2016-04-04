@@ -7,7 +7,7 @@ package com.cenerino.algorithms.java.unionfind;
  * Union: N
  * Connected: 1
  */
-public class QuickFind {
+public class QuickFind implements UnionFind {
 
     private int[] ids;
 
@@ -19,10 +19,12 @@ public class QuickFind {
         }
     }
 
+    @Override
     public boolean isConnected(int p, int q) {
         return ids[p] == ids[q];
     }
 
+    @Override
     public void union(int p, int q) {
         if (!isConnected(p,q)) {
             int pid = ids[p];
