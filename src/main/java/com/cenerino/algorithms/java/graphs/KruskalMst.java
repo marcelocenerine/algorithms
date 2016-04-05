@@ -1,7 +1,7 @@
 package com.cenerino.algorithms.java.graphs;
 
-import com.cenerino.algorithms.java.unionfind.QuickUnionWithPathCompression;
-import com.cenerino.algorithms.java.unionfind.UnionFind;
+import com.cenerino.algorithms.java.uf.QuickUnionWithPathCompression;
+import com.cenerino.algorithms.java.uf.UnionFind;
 
 import java.util.*;
 

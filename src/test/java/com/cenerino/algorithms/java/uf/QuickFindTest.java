@@ -1,4 +1,4 @@
-package com.cenerino.algorithms.java.unionfind;
+package com.cenerino.algorithms.java.uf;
 
 import org.junit.Before;
 import org.junit.Test;

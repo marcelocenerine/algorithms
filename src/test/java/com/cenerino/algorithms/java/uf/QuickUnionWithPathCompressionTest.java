@@ -1,4 +1,4 @@
-package com.cenerino.algorithms.java.unionfind;
+package com.cenerino.algorithms.java.uf;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -6,13 +6,13 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class QuickUnionTest {
+public class QuickUnionWithPathCompressionTest {
 
-    private QuickUnion qu;
+    private QuickUnionWithPathCompression qu;
 
     @Before
     public void setUp() {
-        qu = new QuickUnion(10);
+        qu = new QuickUnionWithPathCompression(10);
     }
 
     @Test
