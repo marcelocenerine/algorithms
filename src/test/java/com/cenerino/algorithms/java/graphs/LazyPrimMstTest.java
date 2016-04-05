@@ -9,7 +9,7 @@ import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class KruskalMstTest {
+public class LazyPrimMstTest {
 
     private Edge<Integer> e_0_2 = new Edge<>(0, 2, 0.26);
     private Edge<Integer> e_0_4 = new Edge<>(0, 4, 0.38);
@@ -27,7 +27,7 @@ public class KruskalMstTest {
     private Edge<Integer> e_4_6 = new Edge<>(4, 6, 0.93);
     private Edge<Integer> e_4_7 = new Edge<>(4, 7, 0.37);
     private Edge<Integer> e_5_7 = new Edge<>(5, 7, 0.28);
-    private KruskalMst<Integer> kruskalMst;
+    private LazyPrimMst<Integer> primMst;
 
     @Before
     public void setUp() {
@@ -49,17 +49,17 @@ public class KruskalMstTest {
         graph.addEdge(e_4_6);
         graph.addEdge(e_4_7);
         graph.addEdge(e_5_7);
-        kruskalMst =  KruskalMst.from(graph);
+        primMst =  LazyPrimMst.from(graph);
     }
 
     @Test
     public void shouldReturnEdgesInTheMinimumSpanningTree() {
-        assertThat(kruskalMst.edges().size(), is(7));
-        assertThat(kruskalMst.edges(), hasItems(e_4_5, e_5_7, e_1_7, e_0_7, e_0_2, e_2_3, e_2_6));
+        assertThat(primMst.edges().size(), is(7));
+        assertThat(primMst.edges(), hasItems(e_4_5, e_5_7, e_1_7, e_0_7, e_0_2, e_2_3, e_2_6));
     }
 
     @Test
     public void shouldReturnWeightOfTheMinimumSpanningTree() {
-        assertThat(kruskalMst.weight(), is(1.81));
+        assertThat(primMst.weight(), is(1.81));
     }
 }
