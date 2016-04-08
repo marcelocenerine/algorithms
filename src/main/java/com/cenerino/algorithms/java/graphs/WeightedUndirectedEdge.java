@@ -1,11 +1,11 @@
 package com.cenerino.algorithms.java.graphs;
 
-public class Edge<T> implements Comparable<Edge<T>> {
+public class WeightedUndirectedEdge<T> implements Comparable<WeightedUndirectedEdge<T>> {
 
     private T v, w;
     private double weight;
 
-    public Edge(T v, T w, double weight) {
+    public WeightedUndirectedEdge(T v, T w, double weight) {
         if (weight < 0) throw new IllegalArgumentException();
 
         this.v = v;
@@ -27,7 +27,7 @@ public class Edge<T> implements Comparable<Edge<T>> {
     }
 
     @Override
-    public int compareTo(Edge<T> that) {
+    public int compareTo(WeightedUndirectedEdge<T> that) {
         return Double.compare(this.weight, that.weight);
     }
 }

@@ -4,27 +4,27 @@ import java.util.*;
 
 public class LazyPrimMst<V> {
 
-    private final Queue<Edge<V>> mst = new LinkedList<>();
+    private final Queue<WeightedUndirectedEdge<V>> mst = new LinkedList<>();
     private double weight;
-    private final Queue<Edge<V>> queue = new PriorityQueue<>();
+    private final Queue<WeightedUndirectedEdge<V>> queue = new PriorityQueue<>();
     private Set<V> visited;
 
-    public static <V> LazyPrimMst<V> from(UndirectedWeightedGraph<V> graph) {
+    public static <V> LazyPrimMst<V> from(WeightedUndirectedGraph<V> graph) {
         return new LazyPrimMst<>(graph);
     }
 
-    private LazyPrimMst(UndirectedWeightedGraph<V> graph) {
+    private LazyPrimMst(WeightedUndirectedGraph<V> graph) {
         visited = new HashSet<>(graph.vertexCount());
 
         for (V v : graph.vertices())
             if (!visited.contains(v)) prim(graph, v);
     }
 
-    private void prim(UndirectedWeightedGraph<V> graph, V current) {
+    private void prim(WeightedUndirectedGraph<V> graph, V current) {
         visit(graph, current);
 
         while (!queue.isEmpty()) {
-            Edge<V> e = queue.remove();
+            WeightedUndirectedEdge<V> e = queue.remove();
             V v = e.either();
             V w = e.other(v);
 
@@ -38,14 +38,14 @@ public class LazyPrimMst<V> {
         }
     }
 
-    private void visit(UndirectedWeightedGraph<V> graph, V v) {
+    private void visit(WeightedUndirectedGraph<V> graph, V v) {
         visited.add(v);
 
-        for (Edge<V> e : graph.adj(v))
+        for (WeightedUndirectedEdge<V> e : graph.adj(v))
             if (!visited.contains(e.other(v))) queue.add(e);
     }
 
-    public Collection<Edge<V>> edges() {
+    public Collection<WeightedUndirectedEdge<V>> edges() {
         return Collections.unmodifiableCollection(mst);
     }
 

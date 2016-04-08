@@ -2,31 +2,31 @@ package com.cenerino.algorithms.java.graphs;
 
 import java.util.*;
 
-public class UndirectedWeightedGraph<V> {
+public class WeightedUndirectedGraph<V> {
 
-    private final Map<V, List<Edge<V>>> adjacencyLists = new HashMap<>();
-    private final List<Edge<V>> edges = new LinkedList<>();
+    private final Map<V, List<WeightedUndirectedEdge<V>>> adjacencyLists = new HashMap<>();
+    private final List<WeightedUndirectedEdge<V>> undirectedEdges = new LinkedList<>();
 
     public boolean addVertex(V vertex) {
         return adjacencyLists.putIfAbsent(vertex, new LinkedList<>()) == null;
     }
 
-    public void addEdge(Edge<V> e) {
+    public void addEdge(WeightedUndirectedEdge<V> e) {
         V v = e.either();
         V w = e.other(v);
         validateVertices(v, w);
         adjacencyLists.get(v).add(e);
         adjacencyLists.get(w).add(e);
-        edges.add(e);
+        undirectedEdges.add(e);
     }
 
-    public List<Edge<V>> adj(V v) {
+    public List<WeightedUndirectedEdge<V>> adj(V v) {
         validateVertices(v);
         return Collections.unmodifiableList(adjacencyLists.get(v));
     }
 
-    public List<Edge<V>> edges() {
-        return Collections.unmodifiableList(edges);
+    public List<WeightedUndirectedEdge<V>> edges() {
+        return Collections.unmodifiableList(undirectedEdges);
     }
 
     public Set<V> vertices() {
@@ -38,7 +38,7 @@ public class UndirectedWeightedGraph<V> {
     }
 
     public int edgeCount() {
-        return edges.size();
+        return undirectedEdges.size();
     }
 
     public int degree(V vertex) {

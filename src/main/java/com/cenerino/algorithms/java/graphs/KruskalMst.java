@@ -7,36 +7,36 @@ import java.util.*;
 
 public class KruskalMst<V> {
 
-    private final Queue<Edge<V>> mst = new LinkedList<>();
+    private final Queue<WeightedUndirectedEdge<V>> mst = new LinkedList<>();
     private double weight;
 
-    public static <V> KruskalMst<V> from(UndirectedWeightedGraph<V> graph) {
+    public static <V> KruskalMst<V> from(WeightedUndirectedGraph<V> graph) {
         return new KruskalMst<>(graph);
     }
 
-    private KruskalMst(UndirectedWeightedGraph<V> graph) {
-        Queue<Edge<V>> queue = new PriorityQueue<>(graph.edges());
+    private KruskalMst(WeightedUndirectedGraph<V> graph) {
+        Queue<WeightedUndirectedEdge<V>> queue = new PriorityQueue<>(graph.edges());
         UnionFind uf = new QuickUnionWithPathCompression(graph.vertexCount());
         Map<V, Integer> mapVxToId = new HashMap<>(); // TODO make UF generic?
         int i = 0;
         for (V v : graph.vertices()) mapVxToId.put(v, i++); // FIXME mapping vertex to id in the union find alg.
 
         while (!queue.isEmpty() && mst.size() < graph.vertexCount() - 1) {
-            Edge<V> edge = queue.remove();
-            V v = edge.either();
-            V w = edge.other(v);
+            WeightedUndirectedEdge<V> undirectedEdge = queue.remove();
+            V v = undirectedEdge.either();
+            V w = undirectedEdge.other(v);
             int vid = mapVxToId.get(v);
             int wid = mapVxToId.get(w);
 
             if (!uf.isConnected(vid, wid)) {
                 uf.union(vid, wid);
-                mst.add(edge);
-                weight += edge.weight();
+                mst.add(undirectedEdge);
+                weight += undirectedEdge.weight();
             }
         }
     }
 
-    public Collection<Edge<V>> edges() {
+    public Collection<WeightedUndirectedEdge<V>> edges() {
         return Collections.unmodifiableCollection(mst);
     }
 
