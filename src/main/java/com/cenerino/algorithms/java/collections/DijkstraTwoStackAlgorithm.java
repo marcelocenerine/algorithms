@@ -1,6 +1,6 @@
 package com.cenerino.algorithms.java.collections;
 
-public class DjikstraTwoStackAlgorighm {
+public class DijkstraTwoStackAlgorithm {
 
     public double eval(String[] expression) {
         LinkedStack<Double> vals = new LinkedStack<>();
