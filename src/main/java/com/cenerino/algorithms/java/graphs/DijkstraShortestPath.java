@@ -7,6 +7,7 @@ import java.util.*;
 
 import static java.lang.Double.POSITIVE_INFINITY;
 import static java.util.Collections.emptyList;
+import static java.util.Objects.isNull;
 
 public class DijkstraShortestPath<V> {
 
@@ -24,27 +25,34 @@ public class DijkstraShortestPath<V> {
         this.graph = graph;
         assertVertexExist(source);
 
-        FibonacciHeapNode<V> fibHeapNode = new FibonacciHeapNode<>(source);
-        fibHeap.insert(fibHeapNode, 0.0);
-        seenVertices.put(source, fibHeapNode);
+        FibonacciHeapNode<V> heapNode = new FibonacciHeapNode<>(source);
+        fibHeap.insert(heapNode, 0.0);
+        seenVertices.put(source, heapNode);
         distanceTo.put(source, 0.0);
 
-        while (!fibHeap.isEmpty())
-            graph.adj(fibHeap.removeMin().getData()).stream().forEach(this::relax);
+        while (!fibHeap.isEmpty()) {
+            V v = fibHeap.removeMin().getData();
+            graph.adj(v).stream().forEach(this::relax);
+        }
     }
 
     private void relax(WeightedDirectedEdge<V> edge) {
         V from = edge.from();
         V to = edge.to();
 
-        if (distanceTo.getOrDefault(to, POSITIVE_INFINITY) >
-                distanceTo.getOrDefault(from, POSITIVE_INFINITY) + edge.weight()) {
+        if (distanceTo.getOrDefault(to, POSITIVE_INFINITY)
+                > distanceTo.getOrDefault(from, POSITIVE_INFINITY) + edge.weight()) {
             double distance2To = distanceTo.get(from) + edge.weight();
             distanceTo.put(to, distance2To);
             edgeTo.put(to, edge);
+            FibonacciHeapNode<V> toNode = seenVertices.get(to);
 
-            if (seenVertices.containsKey(to)) fibHeap.decreaseKey(seenVertices.get(to), distance2To);
-            else fibHeap.insert(new FibonacciHeapNode<>(to), distance2To);
+            if (!isNull(toNode)) fibHeap.decreaseKey(toNode, distance2To);
+            else {
+                toNode = new FibonacciHeapNode<>(to);
+                fibHeap.insert(toNode, distance2To);
+                seenVertices.put(to, toNode);
+            }
         }
     }
 
