@@ -27,13 +27,13 @@ public class BreadthFirstPaths<V> {
         while (!queue.isEmpty()) {
             V vertex = queue.remove();
 
-            for (V adj : graph.adj(vertex)) {
+            graph.adj(vertex).stream().forEach(adj -> {
                 if (!visited.contains(adj)) {
                     queue.add(adj);
                     visited.add(adj);
                     edgeTo.put(adj, vertex);
                 }
-            }
+            });
         }
     }
 
@@ -46,9 +46,7 @@ public class BreadthFirstPaths<V> {
 
         Deque<V> path = new LinkedList<>();
 
-        for (V v = target; v != source; v = edgeTo.get(v)) {
-            path.push(v);
-        }
+        for (V v = target; v != source; v = edgeTo.get(v)) path.push(v);
 
         path.push(source);
         return path;

@@ -6,7 +6,7 @@ public class WeightedDirectedEdge<T> implements Comparable<WeightedDirectedEdge<
     private double weight;
 
     public WeightedDirectedEdge(T from, T to, double weight) {
-        if (weight < 0) throw new IllegalArgumentException();
+        if (weight < 0) throw new IllegalArgumentException(); // limitation in the current implementation
 
         this.from = from;
         this.to = to;

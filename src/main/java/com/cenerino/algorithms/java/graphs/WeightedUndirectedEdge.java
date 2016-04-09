@@ -6,7 +6,7 @@ public class WeightedUndirectedEdge<T> implements Comparable<WeightedUndirectedE
     private double weight;
 
     public WeightedUndirectedEdge(T v, T w, double weight) {
-        if (weight < 0) throw new IllegalArgumentException();
+        if (weight < 0) throw new IllegalArgumentException(); // limitation in the current implementation
 
         this.v = v;
         this.w = w;

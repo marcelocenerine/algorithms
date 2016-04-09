@@ -107,4 +107,18 @@ public class WeightedDirectedGraphTest {
 
         assertThat(graph.vertices(), hasItems(1, 2, 3));
     }
+
+    @Test
+    public void shouldReturnAllEdges() {
+        graph.addVertex(1);
+        graph.addVertex(2);
+        graph.addVertex(3);
+
+        WeightedDirectedEdge<Integer> e1 = new WeightedDirectedEdge<>(1, 2, 0.0);
+        WeightedDirectedEdge<Integer> e2 = new WeightedDirectedEdge<>(2, 3, 0.0);
+        graph.addEdge(e1);
+        graph.addEdge(e2);
+
+        assertThat(graph.edges(), hasItems(e1, e2));
+    }
 }

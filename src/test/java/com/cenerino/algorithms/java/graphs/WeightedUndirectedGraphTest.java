@@ -1,5 +1,6 @@
 package com.cenerino.algorithms.java.graphs;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -105,5 +106,19 @@ public class WeightedUndirectedGraphTest {
         graph.addVertex(3);
 
         assertThat(graph.vertices(), hasItems(1, 2, 3));
+    }
+
+    @Test
+    public void shouldReturnAllEdges() {
+        graph.addVertex(1);
+        graph.addVertex(2);
+        graph.addVertex(3);
+
+        WeightedUndirectedEdge<Integer> e1 = new WeightedUndirectedEdge<>(1, 2, 0.0);
+        WeightedUndirectedEdge<Integer> e2 = new WeightedUndirectedEdge<>(2, 3, 0.0);
+        graph.addEdge(e1);
+        graph.addEdge(e2);
+
+        assertThat(graph.edges(), hasItems(e1, e2));
     }
 }

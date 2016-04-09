@@ -21,13 +21,12 @@ public class DepthFirstPaths<V> {
 
     private void dfs(Graph<V> graph, V source) {
         visited.add(source);
-
-        for (V adj : graph.adj(source)) {
+        graph.adj(source).stream().forEach(adj -> {
             if (!visited.contains(adj)) {
                 edgeTo.put(adj, source);
                 dfs(graph, adj);
             }
-        }
+        });
     }
 
     public boolean hasPathTo(V target) {
