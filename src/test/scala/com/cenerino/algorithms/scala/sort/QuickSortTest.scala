@@ -2,11 +2,8 @@ package com.cenerino.algorithms.scala.sort
 
 import org.hamcrest.CoreMatchers._
 import org.junit.Assert._
-import org.junit.runner.RunWith
 import org.scalatest.FunSuite
-import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 class QuickSortTest extends FunSuite {
 
   test("sort distinct elements") {

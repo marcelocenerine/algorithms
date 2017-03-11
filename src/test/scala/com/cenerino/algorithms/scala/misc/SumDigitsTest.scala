@@ -2,11 +2,8 @@ package com.cenerino.algorithms.scala.misc
 
 import org.hamcrest.CoreMatchers._
 import org.junit.Assert._
-import org.junit.runner.RunWith
 import org.scalatest.FunSuite
-import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 class SumDigitsTest extends FunSuite {
 
   test("sum digits of zero") {

@@ -2,11 +2,8 @@ package com.cenerino.algorithms.scala.math
 
 import org.hamcrest.CoreMatchers._
 import org.junit.Assert._
-import org.junit.runner.RunWith
 import org.scalatest.FunSuite
-import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 class FibonacciTest extends FunSuite {
 
   test("calculate 0th") {

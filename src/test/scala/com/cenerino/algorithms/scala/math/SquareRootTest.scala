@@ -1,13 +1,8 @@
 package com.cenerino.algorithms.scala.math
 
-import org.hamcrest.CoreMatchers
-import org.hamcrest.CoreMatchers._
 import org.junit.Assert._
-import org.junit.runner.RunWith
 import org.scalatest.FunSuite
-import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 class SquareRootTest extends FunSuite {
 
   test("calculate square root") {
