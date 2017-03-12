@@ -3,7 +3,7 @@ package com.cenerino.algorithms.scala.sort
 import com.cenerino.algorithms.scala.sort.QuickSort._
 import org.scalatest.FunSuite
 
-class QuickSortTest extends FunSuite {
+class QuickSortSuite extends FunSuite {
 
   test("sort distinct elements") {
     val result = sort(Array(10, 5, 9, 1, 3, 0, -1, 5, 8, 15, 4, 7, -6))

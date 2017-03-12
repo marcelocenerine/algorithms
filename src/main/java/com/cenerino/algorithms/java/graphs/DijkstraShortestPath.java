@@ -32,7 +32,7 @@ public class DijkstraShortestPath<V> {
 
         while (!fibHeap.isEmpty()) {
             V v = fibHeap.removeMin().getData();
-            graph.adj(v).stream().forEach(this::relax);
+            graph.adj(v).forEach(this::relax);
         }
     }
 

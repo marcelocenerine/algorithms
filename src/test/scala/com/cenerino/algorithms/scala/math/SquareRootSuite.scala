@@ -3,7 +3,7 @@ package com.cenerino.algorithms.scala.math
 import com.cenerino.algorithms.scala.math.SquareRoot._
 import org.scalatest.FunSuite
 
-class SquareRootTest extends FunSuite {
+class SquareRootSuite extends FunSuite {
 
   test("calculate square root") {
     sqrt(81) === 9.0

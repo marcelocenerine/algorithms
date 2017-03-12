@@ -3,7 +3,7 @@ package com.cenerino.algorithms.scala.math
 import com.cenerino.algorithms.scala.math.Gcd._
 import org.scalatest.FunSuite
 
-class GcdTest extends FunSuite {
+class GcdSuite extends FunSuite {
 
   test("calculate greatest common divisor of positive numbers") {
     gcd(21, 14) === 7

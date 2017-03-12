@@ -3,7 +3,7 @@ package com.cenerino.algorithms.scala.misc
 import com.cenerino.algorithms.scala.misc.ClockHandsAngle._
 import org.scalatest.FunSuite
 
-class ClockHandsAngleTest extends FunSuite {
+class ClockHandsAngleSuite extends FunSuite {
 
   test("calculate angle @ 00:00") {
     calcAngle(0, 0) === 0

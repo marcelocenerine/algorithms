@@ -3,7 +3,7 @@ package com.cenerino.algorithms.scala.math
 import com.cenerino.algorithms.scala.math.Fibonacci._
 import org.scalatest.FunSuite
 
-class FibonacciTest extends FunSuite {
+class FibonacciSuite extends FunSuite {
 
   test("calculate 0th") {
     fib(0) === 0L

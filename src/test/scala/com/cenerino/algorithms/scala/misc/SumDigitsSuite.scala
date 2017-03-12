@@ -3,7 +3,7 @@ package com.cenerino.algorithms.scala.misc
 import com.cenerino.algorithms.scala.misc.SumDigits._
 import org.scalatest.FunSuite
 
-class SumDigitsTest extends FunSuite {
+class SumDigitsSuite extends FunSuite {
 
   test("sum digits of zero") {
     calc(0) === 0
