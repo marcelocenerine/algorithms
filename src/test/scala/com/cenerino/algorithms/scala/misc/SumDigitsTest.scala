@@ -1,28 +1,27 @@
 package com.cenerino.algorithms.scala.misc
 
-import org.hamcrest.CoreMatchers._
-import org.junit.Assert._
+import com.cenerino.algorithms.scala.misc.SumDigits._
 import org.scalatest.FunSuite
 
 class SumDigitsTest extends FunSuite {
 
   test("sum digits of zero") {
-    assertThat(SumDigits.calc(0), is(0))
+    calc(0) === 0
   }
 
   test("sum digits of single digit number") {
-    assertThat(SumDigits.calc(9), is(9))
+    calc(9) === 9
   }
 
   test("sum digits of two digits number") {
-    assertThat(SumDigits.calc(79), is(16))
+    calc(79) === 16
   }
 
   test("sum digits of long number") {
-    assertThat(SumDigits.calc(1234567890), is(45))
+    calc(1234567890) === 45
   }
 
   test("sum digits of negative number") {
-    assertThat(SumDigits.calc(-987), is(24))
+    calc(-987) === 24
   }
 }
