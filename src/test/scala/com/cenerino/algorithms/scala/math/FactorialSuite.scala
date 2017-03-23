@@ -6,6 +6,6 @@ import org.scalatest.FunSuite
 class FactorialSuite extends FunSuite {
 
   test("calculate factorial") {
-    factorial(10) === 3628800
+    assert(factorial(10) === 3628800)
   }
 }

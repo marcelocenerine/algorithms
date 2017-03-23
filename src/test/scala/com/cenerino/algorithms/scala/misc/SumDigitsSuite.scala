@@ -6,22 +6,22 @@ import org.scalatest.FunSuite
 class SumDigitsSuite extends FunSuite {
 
   test("sum digits of zero") {
-    calc(0) === 0
+    assert(calc(0) === 0)
   }
 
   test("sum digits of single digit number") {
-    calc(9) === 9
+    assert(calc(9) === 9)
   }
 
   test("sum digits of two digits number") {
-    calc(79) === 16
+    assert(calc(79) === 16)
   }
 
   test("sum digits of long number") {
-    calc(1234567890) === 45
+    assert(calc(1234567890) === 45)
   }
 
   test("sum digits of negative number") {
-    calc(-987) === 24
+    assert(calc(-987) === 24)
   }
 }
